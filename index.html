@@ -30,16 +30,171 @@
             padding: 30px;
             background: #fff8e1;
             border-radius: 10px;
+            position: relative;
+        }
+        .tips-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .action-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        .action-button:hover {
+            background: rgba(0,0,0,0.2);
+        }
+        .checklist {
+            margin: 30px auto;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto;
+        }
+        .share-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: transform 0.2s;
+        }
+        .share-button:hover {
+            transform: translateY(-2px);
+        }
+        .facebook-button {
+            background: #1877f2;
+            color: white;
+        }
+        .line-button {
+            background: linear-gradient(45deg, #06c755, #00b900);
+            color: white;
+        }
+        .print-button {
+            background: #757575;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🧹 春節大掃除清潔全攻略</h1>
+        
         <div class="tips">
-            <h2>實用清潔小技巧</h2>
-            <p>讓我們一起用環保友善的方式，迎接嶄新的一年！</p>
+            <div class="tips-actions">
+                <button class="action-button" onclick="window.print()">🖨️</button>
+                <button class="action-button" onclick="shareLineContent(this)">💬</button>
+            </div>
+            <h2>廚房清潔</h2>
+            <p><strong>油污處理：</strong>使用小蘇打粉加檸檬汁製成的天然清潔劑，可有效去除油垢。</p>
+            <p><strong>流理台保養：</strong>用白醋稀釋後擦拭，能消除異味並保持光亮。</p>
+            <p><strong>冰箱除臭：</strong>放置活性碳或茶包，可吸收異味。</p>
+        </div>
+
+        <div class="tips">
+            <div class="tips-actions">
+                <button class="action-button" onclick="window.print()">🖨️</button>
+                <button class="action-button" onclick="shareLineContent(this)">💬</button>
+            </div>
+            <h2>浴室清潔</h2>
+            <p><strong>鏡面保養：</strong></p>
+            <p><strong>簡易配方：</strong>1 杯溫水 + 2 湯匙白醋 + 1 茶匙洗碗精</p>
+            <p><strong>替代方案：</strong>濕紙巾擦拭後用乾布擦乾、專業玻璃清潔劑（環保型）、茶包浸泡溫水</p>
+            <p><strong>防霧技巧：</strong>肥皂輕擦後擦拭均勻、使用防霧噴劑（持續2-3週）、開啟抽風機減少水氣</p>
+            <p><strong>使用方法：</strong>用超細纖維布沾取清潔液，由上而下擦拭，立即用乾布擦乾</p>
+            <p><strong>保養頻率：</strong>每週1-2次，髒污時立即處理</p>
+        </div>
+
+        <div class="tips">
+            <div class="tips-actions">
+                <button class="action-button" onclick="window.print()">🖨️</button>
+                <button class="action-button" onclick="shareLineContent(this)">💬</button>
+            </div>
+            <h2>客廳清潔</h2>
+            <p><strong>地板打蠟：</strong>使用天然蜂蠟，既環保又持久。</p>
+            <p><strong>沙發清潔：</strong>用小蘇打粉灑在沙發上，靜置15分鐘後吸塵。</p>
+            <p><strong>窗戶玻璃：</strong>用報紙沾白醋水擦拭，不留水痕。</p>
+        </div>
+
+        <div class="checklist">
+            <h2>🎯 清潔檢查表</h2>
+            <div class="checklist-item">
+                <input type="checkbox" id="task1">
+                <label for="task1">準備環保清潔用品</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="task2">
+                <label for="task2">規劃清潔順序和時間</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="task3">
+                <label for="task3">檢查通風設備</label>
+            </div>
+        </div>
+
+        <div class="share-buttons">
+            <button class="share-button facebook-button" onclick="shareFacebook()">
+                分享到 Facebook
+            </button>
+            <button class="share-button line-button" onclick="shareLine()">
+                分享到 LINE
+            </button>
+            <button class="share-button print-button" onclick="window.print()">
+                列印清單
+            </button>
         </div>
     </div>
+
+    <script>
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`, '_blank');
+        }
+
+        function shareLine() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('🧹 春節大掃除清潔全攻略\n\n快來看看這些實用的清潔小技巧！');
+            window.open(`https://social-plugins.line.me/lineit/share?url=${url}&text=${text}`, '_blank');
+        }
+
+        function shareLineContent(button) {
+            const tipsDiv = button.closest('.tips');
+            const title = tipsDiv.querySelector('h2').textContent;
+            const content = Array.from(tipsDiv.querySelectorAll('p'))
+                .map(p => p.textContent)
+                .join('\n');
+            
+            const text = encodeURIComponent(`${title}\n\n${content}\n\n🔍 更多清潔秘訣：${window.location.href}`);
+            window.open(`https://social-plugins.line.me/lineit/share?text=${text}`, '_blank');
+        }
+    </script>
 </body>
 </html>
